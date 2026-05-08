@@ -1,0 +1,78 @@
+@prefix ex: <http://linguantuk.ac.id/concept/> .
+@prefix grp: <http://linguantuk.ac.id/group/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rel: <http://linguantuk.ac.id/relation/> .
+
+ex:lexicalconcept a owl:Class .
+
+ex:semanticrelation a owl:Class .
+
+rel:antonym a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rel:belongstogroup grp:semanticopposition .
+
+rel:atlocation a owl:ObjectProperty ;
+    rel:belongstogroup grp:spatialrelation .
+
+rel:belongstogroup a owl:ObjectProperty .
+
+rel:dbpedia a owl:ObjectProperty ;
+    rel:belongstogroup grp:externalknowledge .
+
+rel:derivedfrom a owl:ObjectProperty ;
+    rel:belongstogroup grp:etymologicalrelation .
+
+rel:distinctfrom a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rel:belongstogroup grp:semanticopposition .
+
+rel:etymologicallyderivedfrom a owl:ObjectProperty ;
+    rel:belongstogroup grp:etymologicalrelation .
+
+rel:etymologicallyrelatedto a owl:ObjectProperty ;
+    rel:belongstogroup grp:etymologicalrelation .
+
+rel:instanceof a owl:ObjectProperty ;
+    rel:belongstogroup grp:taxonomicrelation .
+
+rel:isa a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rel:belongstogroup grp:taxonomicrelation .
+
+rel:partof a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rel:belongstogroup grp:taxonomicrelation .
+
+rel:relatedto a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rel:belongstogroup grp:semanticsimilarity .
+
+rel:similarto a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rel:belongstogroup grp:semanticsimilarity .
+
+rel:synonym a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rel:belongstogroup grp:semanticsimilarity .
+
+grp:externalknowledge a owl:Class ;
+    rdfs:subClassOf ex:semanticgroup .
+
+grp:spatialrelation a owl:Class ;
+    rdfs:subClassOf ex:semanticgroup .
+
+grp:semanticopposition a owl:Class ;
+    rdfs:subClassOf ex:semanticgroup .
+
+grp:etymologicalrelation a owl:Class ;
+    rdfs:subClassOf ex:semanticgroup .
+
+grp:semanticsimilarity a owl:Class ;
+    rdfs:subClassOf ex:semanticgroup .
+
+grp:taxonomicrelation a owl:Class ;
+    rdfs:subClassOf ex:semanticgroup .
+
+ex:semanticgroup a owl:Class .
+
