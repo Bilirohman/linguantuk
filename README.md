@@ -235,10 +235,11 @@ Bagian ini menjelaskan cara menggunakan setiap fitur Linguantuk dari sisi penggu
 
 ### 6. AI Recommendation
 
-1. Pada halaman detail entitas, cari panel **AI Recommendation**.
-2. Sistem akan otomatis mengirimkan konteks relasi entitas tersebut (hasil query SPARQL) ke Google Gemini API.
-3. Penjelasan kontekstual mengenai konsep akan ditampilkan dalam format Markdown.
-4. Jika `GEMINI_API_KEY` belum dikonfigurasi, panel ini tidak akan menampilkan hasil — fitur lain tetap berfungsi normal.
+1. Pada halaman detail entitas, cari panel **AI Recommendation** di sisi kiri.
+2. Klik tombol **`+ Generate Insights with Gemini`** untuk memicu pembuatan penjelasan.
+3. Sistem akan otomatis mengirimkan konteks relasi entitas tersebut (hasil query SPARQL) ke Google Gemini API.
+4. Penjelasan kontekstual mengenai konsep akan ditampilkan dalam format Markdown, lengkap dengan ikon refresh untuk regenerasi ulang jika diperlukan.
+5. Jika `GEMINI_API_KEY` belum dikonfigurasi, panel ini tidak akan menampilkan hasil — fitur lain tetap berfungsi normal.
 
 ---
 
