@@ -432,4 +432,4 @@ Dibuat sebagai **Proyek Akhir Mata Kuliah Semantic Web**.
 
 ## 📄 Lisensi
 
-Proyek ini dibuat untuk keperluan akademik. Seluruh data knowledge graph bersumber dari dataset publik ConcepNet yang telah diolah.
+Proyek ini dibuat untuk keperluan akademik. Seluruh data knowledge graph bersumber dari dataset publik ConceptNet yang telah diolah.
