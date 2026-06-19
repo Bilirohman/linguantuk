@@ -13,6 +13,8 @@ Linguantuk adalah aplikasi web fullstack berbasis teknologi Semantic Web yang me
 - [Struktur Direktori](#-struktur-direktori)
 - [Prasyarat](#-prasyarat)
 - [Instalasi & Menjalankan](#-instalasi--menjalankan)
+- [Panduan Pengguna](#-panduan-pengguna)
+- [Contoh Hasil](#-contoh-hasil)
 - [Konfigurasi](#-konfigurasi)
 - [API Endpoint](#-api-endpoint)
 - [Ontologi](#-ontologi)
@@ -171,6 +173,100 @@ Akses aplikasi di:
 - **Backend API Docs:** http://localhost:8000/docs
 
 > ⚠️ **Catatan:** Backend memerlukan waktu beberapa menit untuk startup karena harus memuat `knowledge_graph.ttl` (~20MB, 880.000+ triple) ke memori.
+
+---
+## 📖 Panduan Pengguna
+
+Bagian ini menjelaskan cara menggunakan setiap fitur Linguantuk dari sisi pengguna, tanpa perlu memahami detail teknis backend.
+
+### 1. Semantic Search
+
+1. Buka halaman utama (`http://localhost:3000`).
+2. Ketik kata kunci pada kolom pencarian (misalnya: `happy`, `car`, `goal`).
+3. Sistem akan menampilkan daftar konsep yang cocok secara real-time.
+4. Klik salah satu hasil untuk membuka halaman detail entitas tersebut.
+
+### 2. Entity Detail & Graph Visualizer
+
+1. Pada halaman detail entitas, Anda akan melihat:
+   - **Attributes** — informasi dasar mengenai konsep.
+   - **Outgoing Relations** — relasi yang berasal dari konsep ini ke konsep lain.
+   - **Incoming Relations** — relasi dari konsep lain yang mengarah ke konsep ini.
+   - **Knowledge Graph View** — visualisasi graf interaktif (Cytoscape.js).
+2. Pada graf visual:
+   - Setiap **node** (lingkaran) merepresentasikan satu konsep.
+   - Setiap **edge** (garis penghubung) merepresentasikan satu relasi semantik, dengan label nama relasi di tengahnya.
+   - Klik node lain pada graf untuk berpindah dan mengeksplorasi relasi dari konsep tersebut.
+
+### 3. Ontology Explorer
+
+1. Buka menu **Ontology** pada navigasi atas.
+2. Halaman ini menampilkan struktur skema T-Box, yaitu:
+   - **Classes** — kelas utama (`LexicalConcept`, `SemanticRelation`, `SemanticGroup`) beserta enam sub-kelas semantic group-nya.
+   - **Properties** — daftar seluruh relasi (`rel:synonym`, `rel:isa`, dst.) beserta tipe OWL-nya (SymmetricProperty/TransitiveProperty/ObjectProperty).
+2. Gunakan halaman ini untuk memahami kategori semantik apa saja yang tersedia sebelum melakukan filter di Relations Browser.
+
+### 4. Relations Browser
+
+1. Buka menu **Relations** pada navigasi atas.
+2. Gunakan dropdown filter:
+   - **Group** — saring berdasarkan kategori semantik (misalnya hanya `TaxonomicRelation`).
+   - **Relation** — saring berdasarkan jenis relasi spesifik (misalnya hanya `isa`).
+3. Gunakan kontrol paginasi di bagian bawah tabel untuk menelusuri seluruh relasi pada knowledge graph.
+
+### 5. SPARQL Endpoint
+
+1. Buka menu **SPARQL** pada navigasi atas.
+2. Tulis query pada editor di sisi kiri. Contoh query siap pakai:
+
+```sparql
+   PREFIX ex: <http://linguantuk.ac.id/concept/>
+   PREFIX rel: <http://linguantuk.ac.id/relation/>
+
+   SELECT ?predicate ?object
+   WHERE {
+     ex:goal ?predicate ?object .
+   }
+   LIMIT 10
+```
+
+3. Klik tombol **Run Query**.
+4. Hasil akan ditampilkan dalam bentuk tabel pada panel kanan.
+
+### 6. AI Recommendation
+
+1. Pada halaman detail entitas, cari panel **AI Recommendation**.
+2. Sistem akan otomatis mengirimkan konteks relasi entitas tersebut (hasil query SPARQL) ke Google Gemini API.
+3. Penjelasan kontekstual mengenai konsep akan ditampilkan dalam format Markdown.
+4. Jika `GEMINI_API_KEY` belum dikonfigurasi, panel ini tidak akan menampilkan hasil — fitur lain tetap berfungsi normal.
+
+---
+
+## 🖼️ Contoh Hasil
+
+### Halaman Pencarian Semantik
+![Semantic Search](./docs/screenshots/semantic-search.png)
+*Pengguna mencari konsep dan sistem menampilkan daftar entitas yang relevan secara real-time.*
+
+### Visualisasi Knowledge Graph
+![Knowledge Graph Visualization](./docs/screenshots/graph-view.png)
+*Contoh visualisasi relasi `derivedfrom` antara konsep `lowlife`, `life`, dan `low`.*
+
+### Relation Explorer
+![Relation Explorer](./docs/screenshots/relation-explorer.png)
+*Tabel seluruh relasi pada knowledge graph dengan filter group dan relation.*
+
+### Ontology Explorer
+![Ontology Explorer](./docs/screenshots/ontology-explorer.png)
+*Struktur kelas dan properti OWL pada skema T-Box Linguantuk.*
+
+### SPARQL Query Interface
+![SPARQL Endpoint](./docs/screenshots/sparql-endpoint.png)
+*Contoh eksekusi query SPARQL untuk mencari relasi `antonym` dari konsep `hot`.*
+
+### AI-Assisted Semantic Explanation
+![AI Recommendation](./docs/screenshots/ai-recommendation.png)
+*Penjelasan kontekstual berbasis Gemini API mengenai struktur morfologis suatu konsep.*
 
 ---
 
