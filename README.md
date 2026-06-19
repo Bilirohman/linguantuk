@@ -326,7 +326,9 @@ File-file berikut **tidak di-push ke GitHub** beserta alasannya:
 ---
 
 ## 👨‍💻 Pengembang
-
+- Gunawan Sabili Rahman 140810230018
+- David Christian Nathaniel 140810230027
+- Dzacky Ahmad 140810230043
 Dibuat sebagai **Proyek Akhir Mata Kuliah Semantic Web**.
 
 ---
